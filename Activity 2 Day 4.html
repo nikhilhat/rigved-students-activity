@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikhil Acitivity 2 Form</title>
+</head>
+
+<body>
+    <h1>Registration from</h1>
+    <form action="#" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="user"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td><input type="radio" name="gender" value="M">Male
+                    <input type="radio" name="gender" value="F">Female</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="date" value="DOB">
+                </td>
+            </tr>
+            <tr>
+                <td>Qualification:</td>
+                <td>
+                    <select name="qualification">
+                       
+                            <option value="BTech">B.Tech</option>
+                            <option value="BCOM">BCom</option>
+                            <option value="BSC">BSc</option>
+                            <option value="BCA">BCA</option>
+                            <option value="MCA">MCA</option>
+                            <option value="MBA">MBA</option>
+                            <option value="MTech">M.Tech</option>
+                     
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><textarea name="address" cols="25" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td>Picture:</td>
+                <td><input type="file" name="pic"></td>
+            </tr>
+        </table>
+        <table>
+            <td> Interest Rate &nbsp;
+                <input type="range" name="ROI">
+            </td>
+
+        </table>
+        <table>
+            <td>
+                Download &nbsp;&nbsp;&nbsp; &nbsp; <progress value="55" max="100"></progress>
+            </td>
+        </table>
+        <tr>
+            <br/> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <td><input type="submit" value="Register"></td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td><input type="reset" name="Reset"></td>
+        </tr>
+        </table>
+    </form>
+</body>
+
+</html>
