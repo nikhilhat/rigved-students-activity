@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+}
+
+.item1 {
+    background-color: darkgoldenrod;
+    border: 2px solid black;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.item2 {
+    background-color: cadetblue;
+    border: 2px solid black;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.item3 {
+    background-color: coral;
+    border: 2px solid black;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.container>div {
+    padding: 5px;
+}
+
+@media(max-width:400px) {
+    .container {
+        flex-direction: column;
+    }
+}
