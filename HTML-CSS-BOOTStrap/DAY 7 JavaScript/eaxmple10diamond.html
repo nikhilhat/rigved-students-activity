@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Pyramids</h1>
+
+<body>
+
+    <table style="border: 1px;padding: 0%;">
+        <tr>
+            <td>
+                </script>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <!-- Pyramids-->
+    <table style="border: px;">
+
+        <td>
+            <th>
+                <h2>Diamond Pattern</h2>
+                <script>
+                    n = 12
+
+                    for (i = 1; i <= n; i++) {
+                        for (j = 1; j <= n - i; j++) {
+                            document.write(' ')
+                        }
+                        for (k = 0; k < 2 * i - 1; k++) {
+                            document.write('*')
+                        }
+                        document.write("<br />")
+                        console.log();
+                    }
+                    for (i = 1; i <= n - 1; i++) {
+                        for (j = 0; j < i; j++) {
+                            document.write(' ');
+                        }
+                        for (k = (n - i) * 2 - 1; k > 0; k--) {
+                            document.write('*');
+                        }
+                        document.write("<br />")
+
+                        console.log();
+                    }
+                </script>
+            </th>
+            <th>
+                <h2>Pyramid</h2>
+                <script>
+                    for (i = 1; i <= n; i++) {
+                        for (j = 1; j <= n - i; j++) {
+                            document.write(' ')
+                        }
+                        for (k = 0; k < 2 * i - 1; k++) {
+                            document.write('*')
+                        }
+                        document.write("<br/>")
+
+                        console.log();
+                    }
+                </script>
+            </th>
+            <th>
+                <h2>Reverse Pyramid</h2>
+                <script>
+                    for (let i = 0; i < n; i++) {
+                        for (let j = 0; j < i; j++) {
+                            document.write(' ')
+                        }
+                        for (let k = 0; k < 2 * (n - i) - 1; k++) {
+                            document.write('*')
+                        }
+                        document.write("<br/>")
+                        console.log();
+                    }
+                </script>
+            </th>
+        </td>
+    </table>
+</body>
+
+</html>
