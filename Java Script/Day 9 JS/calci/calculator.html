@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button {
+            display: inline-block;
+            background-color: lightblue;
+            line-height: 170%;
+            width: 90px;
+            height: 30px;
+            border: 2px gray;
+            text-align: center;
+        }
+        
+        label {
+            padding: 4%;
+        }
+        
+        body {
+            background-color: seashell;
+            padding: 10% 30% 10% 30%;
+            width: fit-content;
+            align-items: center;
+            border: 3px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        h4 {
+            text-align: center;
+        }
+        
+        form {
+            border: outset rebeccapurple;
+            padding: 2%;
+            width: 376px;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="calculator">
+        <label><h4 style= "text-align: left; color: darkblue;">Enter Number 1:</h4></label> <input type="text" name="num1" id="num1" autocomplete="off"><br><br>
+        <label><h4 style="text-align: left; color: darkblue;">Enter Number 2:</h4></label> <input type="text" name="num2" id="num2" autocomplete="off"><br>
+        <h4>
+            <h4 style="text-align: left; color: darkblue;">Result..</h4>
+            <label><h5 style="color: green;">The Result is :</h5></label><input type="text" disabled name="result"></input>
+    </form>
+    <br>
+    <hr>
+    <button class="add" onclick="Addition()">Add</button>
+    <button class="subtract" onclick="Subtraction()">Subtract</button>
+    <button class="multiply" onclick="Multiplication()">Multiply</button>
+    <button class="buttonide" onclick="Division()">Divide</button>
+    <br>
+    <hr>
+
+    <!-- <script src="calculator.js" type="text/javascript"> -->
+    <script type="text/javascript">
+        function Addition() {
+            var Num1 = parseInt(calculator.num1.value)
+            var Num2 = parseInt(calculator.num2.value)
+            sum = Num1 + Num2;
+            calculator.result.value = sum
+        }
+
+        function Subtraction() {
+            var Num1 = parseInt(calculator.num1.value)
+            var Num2 = parseInt(calculator.num2.value)
+            diff = Num1 - Num2;
+            calculator.result.value = diff
+        }
+
+        function Multiplication() {
+            var Num1 = parseInt(calculator.num1.value)
+            var Num2 = parseInt(calculator.num2.value)
+            prod = Num1 * Num2;
+            calculator.result.value = prod
+        }
+
+        function Division() {
+            var Num1 = parseInt(calculator.num1.value)
+            var Num2 = parseInt(calculator.num2.value)
+            div = Num1 / Num2;
+            calculator.result.value = div
+        }
+    </script>
+</body>
+
+</html>
