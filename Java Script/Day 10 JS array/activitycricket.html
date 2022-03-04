@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 10</title>
+    <style>
+
+    </style>
+    <script>
+        var employee = {
+            id: 400050,
+            firstname: "Sachin",
+            lastname: "Tendulkar",
+        };
+        var address = [{
+            state: 'Maharashtra',
+            city: 'Mumbai'
+        }];
+        var address1 = [{
+
+            firstname: "Rahul",
+            lastname: "Dravid",
+            state: 'Karnataka',
+            city: 'Bangalore',
+            id: 560103,
+        }];
+        var address2 = [{
+
+            firstname: "Rohit",
+            lastname: "Sharma",
+            state: 'Maharashtra',
+            city: 'Mumbai',
+            id: 411002
+        }];
+    </script>
+</head>
+
+<body>
+    <script>
+        document.write("<h2>Team Rigved</h2>");
+        document.write("<table border = 5 >");
+        document.write("<tr>");
+        document.write("<th>ID</th>");
+        document.write("<th>First name</th>");
+        document.write("<th>Last name</th>");
+        document.write("<th>State</th>");
+        document.write("<th>City</th>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>" + employee.id + "</td>");
+        document.write("<td>" + employee.firstname + "</td>");
+        document.write("<td>" + employee.lastname + "</td>");
+        for (var i = 0; i < address.length; i++) {
+            document.write('<td>' + address[i].state + '</td>' + '<td>' + address[i].city + '</td>');
+
+
+            document.write('<tr>' + '<td>' + address1[i].id + '</td>' + '<td>' + address1[i].firstname + '</td>' + '<td>' + address1[i].lastname + '</td>' + '<td>' + address1[i].state + '</td>' + '<td>' + address1[i].city + '</td>');
+
+
+            document.write('<tr>' + '<td>' + address2[i].id + '</td>' + '<td>' + address2[i].firstname + '</td>' + '<td>' + address2[i].lastname + '</td>' + '<td>' + address2[i].state + '</td>' + '<td>' + address2[i].city + '</td>');
+
+        }
+        document.write("</tr>");
+        document.write("</table>");
+    </script>
+</body>
+
+</html>
