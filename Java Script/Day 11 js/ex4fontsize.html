@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font size</title>
+    <style type="text/css">
+        .b1, .b2 {
+            width: 100px; 
+            height: 40px; 
+            padding: 2px; 
+            background-color: gray; 
+            border: 1px solid red; 
+            display: inline-block;
+            text-align: center; 
+            vertical-align: middle; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="message">Hello World</p>
+        <button class="b1" value="Increase" onclick="Increase()">Increase</button> 
+        <button class="b2" value="Decrease" onclick="Decrease()">Decrease</button>
+    </div>
+    <script type="text/javascript">
+        var counter = 0;
+        var Message = document.getElementById('message')
+        function Increase() {
+            Message.style.fontSize = "x-large"
+            var ele = document.getElementById('message');
+            var size = ['10pt', '15pt', '20pt', '25pt', '40pt'];
+            ele.style.fontSize = size [counter++];
+        }
+        function Decrease() {
+            Message.style.fontSize = "x-small"
+            
+        }
+    </script>
+</body>
+</html>
