@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+
+<body>
+    <h2 style="color: green; background-color: lightblue;">Data Sheet</h2>
+    <centre>
+    <script type = text/javascript>
+    
+    let users = [
+    {name: "Nikhil", age: 26, address:{city: "Nagpur", state: "MH" }},
+    {name: "Ramesh", age: 62,},
+    {name: "Adi", age: 26, address:{city: "BLR", state: "KA" }},
+    {name: "David", age: 36,},
+    {name: "Rockford", age: 18, address:{city: "CHN", state: "TN" }},
+    ];
+    document.write(`<table BORDER="5PX", style="color: green;" , background-color: lightblue >`)
+    document.write(`<tr><th>Name</th> <th>Age</th> <th>City</th> <th>State</th></tr>`)
+    for( i=0; i<users.length; i++)
+    document.write(`<tr><td> ${users[i].name}</td><td> ${users[i].age}</td><td> ${users[i]?.address?.city}</td><td>  ${users[i]?.address?.state}</td></tr>`)
+    document.write(`</table>`)
+    
+    </script>
+    </centre>
+    
+</body>
+</html>
