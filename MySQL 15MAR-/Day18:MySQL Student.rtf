@@ -1,0 +1,471 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \CocoaLigature0 Last login: Wed Mar 16 09:26:20 on console\
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin\
+nikhilhatwar@192 ~ % source ~/.zshrc\
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/opt/homebrew/bin\
+nikhilhatwar@192 ~ % mysql --user=root --password\
+Enter password: \
+Welcome to the MySQL monitor.  Commands end with ; or \\g.\
+Your MySQL connection id is 8\
+Server version: 8.0.28 MySQL Community Server - GPL\
+\
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.\
+\
+Oracle is a registered trademark of Oracle Corporation and/or its\
+affiliates. Other names may be trademarks of their respective\
+owners.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+mysql> EXIT\
+Bye\
+nikhilhatwar@192 ~ % source ~/.zshrc\
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/bin\
+nikhilhatwar@192 ~ % % mysql --user=root --password\
+fg: no current job\
+nikhilhatwar@192 ~ % mysql --user=root --password\
+\
+Enter password: \
+Welcome to the MySQL monitor.  Commands end with ; or \\g.\
+Your MySQL connection id is 9\
+Server version: 8.0.28 MySQL Community Server - GPL\
+\
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.\
+\
+Oracle is a registered trademark of Oracle Corporation and/or its\
+affiliates. Other names may be trademarks of their respective\
+owners.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+mysql> show database;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1\
+mysql> create database employee;\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> show databases;\
++--------------------+\
+| Database           |\
++--------------------+\
+| employee           |\
+| information_schema |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+5 rows in set (0.01 sec)\
+\
+mysql> use employee;\
+Database changed\
+mysql> create table tableone(employee_id int primary key, employee_name varchar(15) not null, employee_age int check(employee_age>=18 and employee_age<=65), email varchar(20) unique);\
+Query OK, 0 rows affected (0.01 sec)\
+\
+mysql> select*from tableone\
+    -> desc tableone\
+    -> ^C\
+mysql> desc tableone;\
++---------------+-------------+------+-----+---------+-------+\
+| Field         | Type        | Null | Key | Default | Extra |\
++---------------+-------------+------+-----+---------+-------+\
+| employee_id   | int         | NO   | PRI | NULL    |       |\
+| employee_name | varchar(15) | NO   |     | NULL    |       |\
+| employee_age  | int         | YES  |     | NULL    |       |\
+| email         | varchar(20) | YES  | UNI | NULL    |       |\
++---------------+-------------+------+-----+---------+-------+\
+4 rows in set (0.01 sec)\
+\
+mysql> insert into tableone values(100, 'Nikhil', 26, 'nikhilhatwar@gmail.com');\
+ERROR 1406 (22001): Data too long for column 'email' at row 1\
+mysql> insert data tableone values(100, 'Nikhil', 26, 'nikhil@hatwar'); \
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tableone values(100, 'Nikhil', 26, 'nikhil@hatwar')' at line 1\
+Query OK, 1 row affected (0.00 sec)100, 'NIKHIL', 26, 'nikhil@hatwar'); \
+\
+mysql> insert into tableone values(101, 'RAMESH', 62, 'ramesh@hatwar');\
+Query OK, 1 row affected (0.01 sec)\
+\
+mysql> insert into tableone values(100, 'Krishna', 17, 'krishna@hatwar');\
+ERROR 3819 (HY000): Check constraint 'tableone_chk_1' is violated.\
+mysql> insert into tableone values(100, 'Pankaj', 66, 'pankat@thorat');\
+ERROR 3819 (HY000): Check constraint 'tableone_chk_1' is violated.\
+mysql> insert into tableone values(100, 'Pankaj', 25, 'nikhil@hatwar');\
+ERROR 1062 (23000): Duplicate entry '100' for key 'tableone.PRIMARY'\
+mysql> alter table tableone add column aadhar int unique;\
+Query OK, 0 rows affected (0.03 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+mysql> alter table tableone add column PAN int unique;\
+Query OK, 0 rows affected (0.02 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+mysql> desc tableone\
+    -> ^C\
+mysql> desc tableone;\
++---------------+-------------+------+-----+---------+-------+\
+| Field         | Type        | Null | Key | Default | Extra |\
++---------------+-------------+------+-----+---------+-------+\
+| employee_id   | int         | NO   | PRI | NULL    |       |\
+| employee_name | varchar(15) | NO   |     | NULL    |       |\
+| employee_age  | int         | YES  |     | NULL    |       |\
+| email         | varchar(20) | YES  | UNI | NULL    |       |\
+| aadhar        | int         | YES  | UNI | NULL    |       |\
+| PAN           | int         | YES  | UNI | NULL    |       |\
++---------------+-------------+------+-----+---------+-------+\
+6 rows in set (0.01 sec)\
+\
+mysql> insert into tableone values (320, 'Ankita', 24, 'ankita@gmail', 120292930, 'qwer12');\
+ERROR 1366 (HY000): Incorrect integer value: 'qwer12' for column 'PAN' at row 1\
+mysql> insert into tableone values (320, 'Ankita', 24, 'ankita@gmail', 120292930, 101010);\
+Query OK, 1 row affected (0.01 sec)\
+\
+mysql> insert into tableone values (321, 'Pankaj', 25, 'pankaj@gmail', 123456, 101000);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> insert into tableone values (321, 'damodhar', 23, 'pankaj@gmail', 123456, 101000);\
+ERROR 1062 (23000): Duplicate entry '321' for key 'tableone.PRIMARY'\
+mysql> select * from tableone;\
++-------------+---------------+--------------+---------------+-----------+--------+\
+| employee_id | employee_name | employee_age | email         | aadhar    | PAN    |\
++-------------+---------------+--------------+---------------+-----------+--------+\
+|         100 | NIKHIL        |           26 | nikhil@hatwar |      NULL |   NULL |\
+|         101 | RAMESH        |           62 | ramesh@hatwar |      NULL |   NULL |\
+|         320 | Ankita        |           24 | ankita@gmail  | 120292930 | 101010 |\
+|         321 | Pankaj        |           25 | pankaj@gmail  |    123456 | 101000 |\
++-------------+---------------+--------------+---------------+-----------+--------+\
+4 rows in set (0.00 sec)\
+\
+mysql> alter table tableone drop PAN;\
+Query OK, 0 rows affected (0.02 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+mysql> sselect * from tableone;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sselect * from tableone' at line 1\
+mysql> select * from tableone;\
++-------------+---------------+--------------+---------------+-----------+\
+| employee_id | employee_name | employee_age | email         | aadhar    |\
++-------------+---------------+--------------+---------------+-----------+\
+|         100 | NIKHIL        |           26 | nikhil@hatwar |      NULL |\
+|         101 | RAMESH        |           62 | ramesh@hatwar |      NULL |\
+|         320 | Ankita        |           24 | ankita@gmail  | 120292930 |\
+|         321 | Pankaj        |           25 | pankaj@gmail  |    123456 |\
++-------------+---------------+--------------+---------------+-----------+\
+4 rows in set (0.00 sec)\
+\
+mysql> create database student;\
+Query OK, 1 row affected (0.01 sec)\
+\
+mysql> use students;\
+ERROR 1049 (42000): Unknown database 'students'\
+mysql> use student;\
+Database changed\
+mysql> create table tableone(employee_id int primary key, employee_name varchar(15) not null, employee_age int check(employee_age>=18 and employee_age<=65), email varchar(20) unique);\
+Query OK, 0 rows affected (0.01 sec)\
+\
+mysql> desc student;\
+ERROR 1146 (42S02): Table 'student.student' doesn't exist\
+mysql> create table student(roll no  int primary key, student_name varchar(15) not null, student_age;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no  int primary key, student_name varchar(15) not null, student_age' at line 1\
+mysql> select * from tableone;\
+Empty set (0.00 sec)\
+\
+mysql> drop table tableone;\
+Query OK, 0 rows affected (0.00 sec)\
+\
+mysql> create table studentinfo(Roll No  int primary key, Student Name\
+    -> ^Crchar(15) not null, Student Age;\
+mysql> create table studentinfo(Roll No  int primary key, Student Name\
+    -> varchar(15) not null, Student Age;^C\
+mysql> create table studentinfo(Roll No  int primary key, Student Name varchar(15) not null, Student Age int;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'No  int primary key, Student Name varchar(15) not null, Student Age int' at line 1\
+mysql> create table studentinfo(RollNo int primary key, Name varchar(15) not null, Age int;)\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1\
+    -> \
+zsh: suspended  mysql --user=root --password\
+nikhilhatwar@192 ~ %           \
+nikhilhatwar@192 ~ % clear      \
+\
+nikhilhatwar@192 ~ % mysql --user=root --password\
+Enter password: \
+Welcome to the MySQL monitor.  Commands end with ; or \\g.\
+Your MySQL connection id is 10\
+Server version: 8.0.28 MySQL Community Server - GPL\
+\
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.\
+\
+Oracle is a registered trademark of Oracle Corporation and/or its\
+affiliates. Other names may be trademarks of their respective\
+owners.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+mysql> show database;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1\
+mysql> show databases;\
++--------------------+\
+| Database           |\
++--------------------+\
+| employee           |\
+| information_schema |\
+| mysql              |\
+| performance_schema |\
+| student            |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> use student;\
+Database changed\
+mysql> create table studentinfo(Roll int primary key, Name varchar(15) not null, Age int);\
+Query OK, 0 rows affected (0.01 sec)\
+\
+mysql> desc studentinfo;\
++-------+-------------+------+-----+---------+-------+\
+| Field | Type        | Null | Key | Default | Extra |\
++-------+-------------+------+-----+---------+-------+\
+| Roll  | int         | NO   | PRI | NULL    |       |\
+| Name  | varchar(15) | NO   |     | NULL    |       |\
+| Age   | int         | YES  |     | NULL    |       |\
++-------+-------------+------+-----+---------+-------+\
+3 rows in set (0.00 sec)\
+\
+mysql> insert into studentinfo values(1, 'Raj', 20);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> insert into studentinfo values(2, 'Ramesh', 20);\
+Query OK, 1 row affected (0.01 sec)\
+\
+mysql> insert into studentinfo values(3, 'Ravi', 21);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> insert into studentinfo values(4, 'Suraj', 22);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> select * from studentinfo;\
++------+--------+------+\
+| Roll | Name   | Age  |\
++------+--------+------+\
+|    1 | Raj    |   20 |\
+|    2 | Ramesh |   20 |\
+|    3 | Ravi   |   21 |\
+|    4 | Suraj  |   22 |\
++------+--------+------+\
+4 rows in set (0.00 sec)\
+mysql> create table marks(M'id int unique, Physics int, Maths int, Chemistry int, foreign    '> ^Cl No) reference studentsinfo(Roll));\
+mysql> create table marks(M'id int unique, Physics int, Maths int, Chemistry int, foreign value(Roll No) reference studentinfo(Roll));\
+    '> ^C\
+mysql> desc marks\
+    -> ^C\
+mysql> desc marks;\
+ERROR 1146 (42S02): Table 'student.marks' doesn't exist\
+mysql> create table marks(MId int unique, Physics int, Maths int, Chemistry int, foreign\
+key(RollNo) reference studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference studentinfo(Roll))' at line 1\
+mysql> desc studentinfo;\
++-------+-------------+------+-----+---------+-------+\
+| Field | Type        | Null | Key | Default | Extra |\
++-------+-------------+------+-----+---------+-------+\
+| Roll  | int         | NO   | PRI | NULL    |       |\
+| Name  | varchar(15) | NO   |     | NULL    |       |\
+| Age   | int         | YES  |     | NULL    |       |\
++-------+-------------+------+-----+---------+-------+\
+3 rows in set (0.00 sec)\
+\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, foreign\
+key(RollNo) reference studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference studentinfo(Roll))' at line 1\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, foreign\
+key(RollNo) references studentinfo(Roll));\
+ERROR 1072 (42000): Key column 'RollNo' doesn't exist in table\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, foreign\
+key(Roll) references studentinfo(Rollno));\
+ERROR 1072 (42000): Key column 'Roll' doesn't exist in table\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, foreign\
+key(Rollno) references studentinfo(Roll));\
+ERROR 1072 (42000): Key column 'Rollno' doesn't exist in table\
+mysql> desc marks;\
+ERROR 1146 (42S02): Table 'student.marks' doesn't exist\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll no\
+int foreign key(Roll no) references studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no int foreign key(Roll no) references studentinfo(Roll))' at line 1\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll no\
+int foreign key(Rollno) references studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no int foreign key(Rollno) references studentinfo(Roll))' at line 1\
+mysql> desc studentinfo;\
++-------+-------------+------+-----+---------+-------+\
+| Field | Type        | Null | Key | Default | Extra |\
++-------+-------------+------+-----+---------+-------+\
+| Roll  | int         | NO   | PRI | NULL    |       |\
+| Name  | varchar(15) | NO   |     | NULL    |       |\
+| Age   | int         | YES  |     | NULL    |       |\
++-------+-------------+------+-----+---------+-------+\
+3 rows in set (0.00 sec)\
+\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll no\
+int foreign key(Roll) references studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no int foreign key(Roll) references studentinfo(Roll))' at line 1\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll inforeign key(Roll) references studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inforeign key(Roll) references studentinfo(Roll))' at line 1\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll int foreign key(Roll) references studentinfo(Roll));\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key(Roll) references studentinfo(Roll))' at line 1\
+mysql> create table marks(MID int unique, Physics int, Maths int, Chemistry int, Roll int, foreign key(Roll) references studentinfo(Roll));\
+Query OK, 0 rows affected (0.01 sec)\
+\
+mysql> desc marks;\
++-----------+------+------+-----+---------+-------+\
+| Field     | Type | Null | Key | Default | Extra |\
++-----------+------+------+-----+---------+-------+\
+| MID       | int  | YES  | UNI | NULL    |       |\
+| Physics   | int  | YES  |     | NULL    |       |\
+| Maths     | int  | YES  |     | NULL    |       |\
+| Chemistry | int  | YES  |     | NULL    |       |\
+| Roll      | int  | YES  | MUL | NULL    |       |\
++-----------+------+------+-----+---------+-------+\
+5 rows in set (0.00 sec)\
+\
+mysql> desc studentinfo;\
++-------+-------------+------+-----+---------+-------+\
+| Field | Type        | Null | Key | Default | Extra |\
++-------+-------------+------+-----+---------+-------+\
+| Roll  | int         | NO   | PRI | NULL    |       |\
+| Name  | varchar(15) | NO   |     | NULL    |       |\
+| Age   | int         | YES  |     | NULL    |       |\
++-------+-------------+------+-----+---------+-------+\
+3 rows in set (0.00 sec)\
+\
+mysql> insert into marks values(11, 70, 80, 80, 2);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> insert into marks values(22, 80, 80, 80, 1);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> insert into marks values(33, 90, 90, 70, 3);\
+Query OK, 1 row affected (0.01 sec)\
+\
+mysql> insert into marks values(44, 88, 88, 77, 4);\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> desc marks;\
++-----------+------+------+-----+---------+-------+\
+| Field     | Type | Null | Key | Default | Extra |\
++-----------+------+------+-----+---------+-------+\
+| MID       | int  | YES  | UNI | NULL    |       |\
+| Physics   | int  | YES  |     | NULL    |       |\
+| Maths     | int  | YES  |     | NULL    |       |\
+| Chemistry | int  | YES  |     | NULL    |       |\
+| Roll      | int  | YES  | MUL | NULL    |       |\
++-----------+------+------+-----+---------+-------+\
+5 rows in set (0.00 sec)\
+\
+mysql> select * from studentinfo;\
++------+--------+------+\
+| Roll | Name   | Age  |\
++------+--------+------+\
+|    1 | Raj    |   20 |\
+|    2 | Ramesh |   20 |\
+|    3 | Ravi   |   21 |\
+|    4 | Suraj  |   22 |\
++------+--------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select * from marks;\
++------+---------+-------+-----------+------+\
+| MID  | Physics | Maths | Chemistry | Roll |\
++------+---------+-------+-----------+------+\
+|   11 |      70 |    80 |        80 |    2 |\
+|   22 |      80 |    80 |        80 |    1 |\
+|   33 |      90 |    90 |        70 |    3 |\
+|   44 |      88 |    88 |        77 |    4 |\
++------+---------+-------+-----------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select mmid, m.Physics, m.Maths, m.Chemistry,m.Roll from studentinfo s right join marks m on s.Roll, s.Name, s.Age;\
+ERROR 1049 (42000): Unknown database 's'\
+mysql> select mmid, m.Physics, m.Maths, m.Chemistry,m.Roll\
+from studentinfo s right join marks m on s.Roll=m.Roll;\
+ERROR 1054 (42S22): Unknown column 'mmid' in 'field list'\
+mysql> select m.mid, m.Physics, m.Maths, m.Chemistry,m.Roll\
+ from studentinfo s right join marks m on s.Roll=m.Roll;\
++------+---------+-------+-----------+------+\
+| mid  | Physics | Maths | Chemistry | Roll |\
++------+---------+-------+-----------+------+\
+|   11 |      70 |    80 |        80 |    2 |\
+|   22 |      80 |    80 |        80 |    1 |\
+|   33 |      90 |    90 |        70 |    3 |\
+|   44 |      88 |    88 |        77 |    4 |\
++------+---------+-------+-----------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select s.age, s.Name, s.Roll from studentinfo s right join marks m on s.Roll=m.Roll;\
++------+--------+------+\
+| age  | Name   | Roll |\
++------+--------+------+\
+|   20 | Raj    |    1 |\
+|   20 | Ramesh |    2 |\
+|   21 | Ravi   |    3 |\
+|   22 | Suraj  |    4 |\
++------+--------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select s.Roll, s.Name, s.Age from studentinfo s right join marks m on s.roll=m.roll;\
++------+--------+------+\
+| Roll | Name   | Age  |\
++------+--------+------+\
+|    1 | Raj    |   20 |\
+|    2 | Ramesh |   20 |\
+|    3 | Ravi   |   21 |\
+|    4 | Suraj  |   22 |\
++------+--------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> desc studentinfo;\
++-------+-------------+------+-----+---------+-------+\
+| Field | Type        | Null | Key | Default | Extra |\
++-------+-------------+------+-----+---------+-------+\
+| Roll  | int         | NO   | PRI | NULL    |       |\
+| Name  | varchar(15) | NO   |     | NULL    |       |\
+| Age   | int         | YES  |     | NULL    |       |\
++-------+-------------+------+-----+---------+-------+\
+3 rows in set (0.01 sec)\
+\
+mysql> select * from studentinfo;\
++------+--------+------+\
+| Roll | Name   | Age  |\
++------+--------+------+\
+|    1 | Raj    |   20 |\
+|    2 | Ramesh |   20 |\
+|    3 | Ravi   |   21 |\
+|    4 | Suraj  |   22 |\
++------+--------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select * from marks;\
++------+---------+-------+-----------+------+\
+| MID  | Physics | Maths | Chemistry | Roll |\
++------+---------+-------+-----------+------+\
+|   11 |      70 |    80 |        80 |    2 |\
+|   22 |      80 |    80 |        80 |    1 |\
+|   33 |      90 |    90 |        70 |    3 |\
+|   44 |      88 |    88 |        77 |    4 |\
++------+---------+-------+-----------+------+\
+4 rows in set (0.00 sec)\
+\
+mysql> select studentinfo.Roll Roll, studentinfo.Name Name, marks.Physics, marks.Maths, marks.Chemistry, (Physics+Maths+Chemistry) Results, round((Physics+Maths+Chemistry)/3,2) Average from studentinfo inner join marks on studentinfo.Roll = makrs.Roll; \
+ERROR 1054 (42S22): Unknown column 'makrs.Roll' in 'on clause'\
+mysql> select studentinfo.Roll Roll, studentinfo.Name Name, marks.Physics, marks.Maths, marks.Chemistry, (Physics+Maths+Chemistry) Results, round((Physics+Maths+Chemistry)/3,2) Average from studentinfo inner join marks on studentinfo.Roll = marks.Roll;\
++------+--------+---------+-------+-----------+---------+---------+\
+| Roll | Name   | Physics | Maths | Chemistry | Results | Average |\
++------+--------+---------+-------+-----------+---------+---------+\
+|    1 | Raj    |      80 |    80 |        80 |     240 |   80.00 |\
+|    2 | Ramesh |      70 |    80 |        80 |     230 |   76.67 |\
+|    3 | Ravi   |      90 |    90 |        70 |     250 |   83.33 |\
+|    4 | Suraj  |      88 |    88 |        77 |     253 |   84.33 |\
++------+--------+---------+-------+-----------+---------+---------+\
+4 rows in set (0.00 sec)\
+\
+mysql> \
+}
