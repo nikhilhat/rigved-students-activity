@@ -1,0 +1,158 @@
+1. Login into source file for MacOS:-
+
+nikhilhatwar@192 ~ % source ~/.zshrc
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/Users/nikhilhatwar/Documents/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/mysql-8.0.28-macos11-arm64/bin:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/bin
+
+2. Login into the mysql source for password:-
+
+nikhilhatwar@192 ~ % mysql --user=root --password
+
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+3. Command for show database:-
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+
+4. Creating a Database Employee:- 
+
+mysql> create database employee;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+5. Changing the directory from source to employee database:-
+
+mysql> use employee;
+Database changed
+
+6. Creating new table with employee_is, employee_name, employee_age and setting their respective value.
+
+mysql> create table tableone(employee_id int primary key, employee_name varchar(15) not null, employee_age int check(employee_age>=18 and employee_age<=65), email varchar(20) unique);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select*from tableone
+    -> desc tableone
+    -> ^C
+7. Describing tableone:- 
+
+mysql> desc tableone;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | NO   | PRI | NULL    |       |
+| employee_name | varchar(15) | NO   |     | NULL    |       |
+| employee_age  | int         | YES  |     | NULL    |       |
+| email         | varchar(20) | YES  | UNI | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+8. Insert data in to the tableone value:
+
+mysql> insert into tableone values(100, 'Nikhil', 26, 'nikhilhatwar@gmail.com');
+ERROR 1406 (22001): Data too long for column 'email' at row 1
+mysql> insert data tableone values(100, 'Nikhil', 26, 'nikhil@hatwar'); 
+Query OK, 1 row affected (0.00 sec)100, 'NIKHIL', 26, 'nikhil@hatwar'); 
+mysql> insert into tableone values(101, 'RAMESH', 62, 'ramesh@hatwar');
+Query OK, 1 row affected (0.01 sec)
+
+9. Checking the constraints by placing duplicate value:- 
+
+mysql> insert into tableone values(100, 'Krishna', 17, 'krishna@hatwar');
+ERROR 3819 (HY000): Check constraint 'tableone_chk_1' is violated.
+mysql> insert into tableone values(100, 'Pankaj', 66, 'pankat@thorat');
+ERROR 3819 (HY000): Check constraint 'tableone_chk_1' is violated.
+mysql> insert into tableone values(100, 'Pankaj', 25, 'nikhil@hatwar');
+ERROR 1062 (23000): Duplicate entry '100' for key 'tableone.PRIMARY'
+
+10. Adding new column of Aadhar and PAN
+mysql> alter table tableone add column aadhar int unique;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table tableone add column PAN int unique;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+10. Displaying the content in rows:-
+
+mysql> desc tableone;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | NO   | PRI | NULL    |       |
+| employee_name | varchar(15) | NO   |     | NULL    |       |
+| employee_age  | int         | YES  |     | NULL    |       |
+| email         | varchar(20) | YES  | UNI | NULL    |       |
+| aadhar        | int         | YES  | UNI | NULL    |       |
+| PAN           | int         | YES  | UNI | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+11. Inserting new values with PAN and Aadhar
+
+mysql> insert into tableone values (320, 'Ankita', 24, 'ankita@gmail', 120292930, 'qwer12');
+ERROR 1366 (HY000): Incorrect integer value: 'qwer12' for column 'PAN' at row 1
+mysql> insert into tableone values (320, 'Ankita', 24, 'ankita@gmail', 120292930, 101010);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into tableone values (321, 'Pankaj', 25, 'pankaj@gmail', 123456, 101000);
+Query OK, 1 row affected (0.00 sec)
+
+12. Inserting duplicate value: 
+
+mysql> insert into tableone values (321, 'damodhar', 23, 'pankaj@gmail', 123456, 101000);
+ERROR 1062 (23000): Duplicate entry '321' for key 'tableone.PRIMARY'
+mysql> select * from tableone;
++-------------+---------------+--------------+---------------+-----------+--------+
+| employee_id | employee_name | employee_age | email         | aadhar    | PAN    |
++-------------+---------------+--------------+---------------+-----------+--------+
+|         100 | NIKHIL        |           26 | nikhil@hatwar |      NULL |   NULL |
+|         101 | RAMESH        |           62 | ramesh@hatwar |      NULL |   NULL |
+|         320 | Ankita        |           24 | ankita@gmail  | 120292930 | 101010 |
+|         321 | Pankaj        |           25 | pankaj@gmail  |    123456 | 101000 |
++-------------+---------------+--------------+---------------+-----------+--------+
+4 rows in set (0.00 sec)
+
+13. Deleting Pan column using alter and drop tag:- 
+
+
+mysql> alter table tableone drop PAN;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> sselect * from tableone;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sselect * from tableone' at line 1
+mysql> select * from tableone;
++-------------+---------------+--------------+---------------+-----------+
+| employee_id | employee_name | employee_age | email         | aadhar    |
++-------------+---------------+--------------+---------------+-----------+
+|         100 | NIKHIL        |           26 | nikhil@hatwar |      NULL |
+|         101 | RAMESH        |           62 | ramesh@hatwar |      NULL |
+|         320 | Ankita        |           24 | ankita@gmail  | 120292930 |
+|         321 | Pankaj        |           25 | pankaj@gmail  |    123456 |
++-------------+---------------+--------------+---------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> 
