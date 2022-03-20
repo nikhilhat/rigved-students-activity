@@ -1,0 +1,209 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 mysql> create table user (UserId int primary key auto_increment, Name varchar(10), Password varchar(20));\
+\
+    -> $$\
+\
+Query OK, 0 rows affected (0.77 sec)\
+\
+\
+\
+mysql> create table user_history(UserId int,Name varchar(10), old_password varchar(20),Time time);\
+\
+    -> $$\
+\
+Query OK, 0 rows affected (0.5 sec)\
+\
+\
+\
+mysql> desc user;\
+\
+    -> $$\
+\
++----------+-------------+------+-----+---------+----------------+\
+\
+| Field    | Type        | Null | Key | Default | Extra          |\
+\
++----------+-------------+------+-----+---------+----------------+\
+\
+| UserId   | int         | NO   | PRI | NULL    | auto_increment |\
+\
+| Name     | varchar(10) | YES  |     | NULL    |                |\
+\
+| Password | varchar(20) | YES  |     | NULL    |                |\
+\
++----------+-------------+------+-----+---------+----------------+\
+\
+3 rows in set (0.20 sec)\
+\
+\
+\
+mysql> desc user_history;\
+\
+    -> $$\
+\
++--------------+-------------+------+-----+---------+-------+\
+\
+| Field        | Type        | Null | Key | Default | Extra |\
+\
++--------------+-------------+------+-----+---------+-------+\
+\
+| UserId       | int         | YES  |     | NULL    |       |\
+\
+| Name         | varchar(10) | YES  |     | NULL    |       |\
+\
+| old_password | varchar(20) | YES  |     | NULL    |       |\
+\
+| Time         | time        | YES  |     | NULL    |       |\
+\
++--------------+-------------+------+-----+---------+-------+\
+\
+4 rows in set (0.00 sec)\
+\
+\
+mysql> insert into user(Name, Password) values(\'91Qwertyuio,\'92qwertyuiop\'92),(\'91Nikhil\'92,\'92asdfghjkl1\'92),(\'91Pankaj,\'92zxcvbnm1234');\
+\
+    -> $$\
+\
+Query OK, 3 rows affected (0.1 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\
+\
+\
+mysql> select * from user;\
+\
+    -> $$\
+\
++--------+-----------+-------------+\
+\
+| UserId | Name      | Password    |\
+\
++--------+-----------+-------------+\
+\
+|      1 | Qwertyuio | qwertyuiop  |\
+\
+|      2 | Nikhil    | asdfghjkl1  |\
+\
+|      3 | Pankaj    | zxcvbnm1234 |\
+\
++--------+-----------+-------------+\
+\
+3 rows in set (0.00 sec)\
+\
+\
+\
+mysql> create trigger update_user_history\
+\
+    -> before update on user for each row\
+\
+    -> begin\
+\
+    -> insert into user_history(Name,old_password,Time) values(old.Name, old.Password, current_time());\
+\
+    -> end\
+\
+    -> $$\
+\
+Query OK, 0 rows affected (0.72 sec)\
+\
+\
+\
+mysql> select * from user_history $$\
+\
+Empty set (0.12 sec)\
+\
+\
+\
+mysql> update user set Password = \'91nikhilhatw\'92 where UserId = 2 $$\
+\
+Query OK, 1 row affected (0.47 sec)\
+\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+\
+\
+mysql> create procedure hist()\
+\
+    ->  select * from user_history $$\
+\
+Query OK, 0 rows affected (0.17 sec)\
+\
+\
+\
+mysql> call hist()\
+\
+    -> $$\
+\
++--------+--------+--------------+----------+\
+\
+| UserId | Name   | old_password | Time     |\
+\
++--------+--------+--------------+----------+\
+\
+|   NULL | Nikhil | asdfghjkl1   | 13:07:55 |\
+\
++--------+--------+--------------+----------+\
+\
+1 row in set (0.1 sec)\
+\
+\
+\
+Query OK, 0 rows affected (0.14 sec)\
+\
+\
+\
+mysql> create procedure hist()\
+\
+    ->  select * from user_history $$\
+\
+Query OK, 0 rows affected (0.17 sec)\
+\
+\
+\
+mysql> call hist()\
+\
+    -> $$\
+\
++--------+--------+--------------+----------+\
+\
+| UserId | Name   | old_password | Time     |\
+\
++--------+--------+--------------+----------+\
+\
+|   NULL | Nikhil | asdfghjkl1   | 13:07:55 |\
+\
++--------+--------+--------------+----------+\
+\
+1 row in set (0.13 sec)\
+\
+\
+Query OK, 0 rows affected (0.1 sec)\
+\
+mysql> select * from user $$\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 +--------+-----------+-------------+\
+\
+| UserId | Name      | Password    |\
+\
++--------+-----------+-------------+\
+\
+|      1 | Qwertyuio | qwertyuiop  |\
+\
+|      2 | Nikhil    | nikhilhatw  |\
+\
+|      3 | Pankaj    | zxcvbnm1234 |\
+\
++--------+-----------+-------------+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+3 rows in set (0.1 sec)\
+\
+mysql>\
+}
