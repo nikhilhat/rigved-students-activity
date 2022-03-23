@@ -1,0 +1,98 @@
+EMPLOYEE
+employee
+
+
+
+
+
+> db.createCollection('sequence');
+{ "ok" : 1 }
+> db.sequence.insert ( {_id: "item_id" , sequence_value : 0 });
+WriteResult({ "nInserted" : 1 })
+> db.sequence.find();
+{ "_id" : "item_id", "sequence_value" : 0 }
+
+
+> db.system.js.save(
+...  {
+...   _id : 'NextSequence',
+...   value : function (seqOfName){
+... var seqDoc = db.sequence.findAndModify({
+...       query:{_id: sequenceOfName },
+...        update: {$inc:{sequence_value:1}},
+...        new:true
+...      });
+...
+...       return seqDoc.sequence_value;
+... }
+...   });
+
+
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : "NextSequence"
+})
+
+> db.loadServerScripts();
+> db.createCollection("player");
+{ "ok" : 1 }
+
+> db.player.insert({
+... "_id":NextSequence("item_id"),
+... name:"Nikhil",
+... class:"B.E."});
+
+WriteResult({ "nInserted" : 1 })
+> db.player.insert({ 
+..."_id":NextSequence("item_id"), 
+...name:"Pankaj", class:"BE"});
+WriteResult({ "nInserted" : 1 })
+> db.player.find();
+{ "_id" : 1, "name" : "Nikhil", "class" : "BE" }
+{ "_id" : 2, "name" : "Pankaj", "class" : "SE" }
+>
+
+
+
+
+
+
+
+
+
+> use mydb
+switched to db mydb
+> show collections;
+EMPLOYEE
+employee
+sequence
+
+user
+
+
+
+> db.createCollection("p1");
+{ "ok" : 1 }
+
+
+
+> db.loadServerScripts();
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Nikhil", pos:"Batting"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Pankaj", pos:"Batting"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Arjun", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Rupesh", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.insert({ "_id":NextSequence("item_id"), name:"Vaibhav", pos:"Bowling"});
+WriteResult({ "nInserted" : 1 })
+> db.p1.find();
+{ "_id" : 1, "name" : "Nikhil", "pos" : "Batting" }
+{ "_id" : 2, "name" : "Pankaj", "pos" : "Batting" }
+{ "_id" : 3, "name" : "Arjun", "pos" : "Bowling" }
+{ "_id" : 4, "name" : "Rupesh", "pos" : "Bowling" }
+{ "_id" : 5, "name" : "Vaibhav", "pos" : "Bowling" }
+>

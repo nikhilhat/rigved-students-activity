@@ -1,0 +1,35 @@
+
+> db.createCollection("studentUni");
+{ "ok" : 1 }
+> db.studentUni.insertOne({_id:"Seq",seq_value:0});
+{ "acknowledged" : true, "insertedId" : "Seq" }
+> db.studentUni.find();
+{ "_id" : "Seq", "seq_value" : 0 }
+> db.system.js.save({
+... _id:"nextSeq",
+... value : function(seqOfName){
+... let seqDoc = db.studentUni.findAndModify({
+... query:{_id:seqOfName},
+... update:{$inc:{seq_value:1}},
+... new:true
+... });
+... return seqOfName + seqDoc.seq_value;
+... }
+... });
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "nextSeq" })
+> db.loadServerScripts();
+> db.studentUni.insertOne({'_id':nextSeq('Seq'),name:'Nikhil', class:'F.Y', div:'G'});
+{ "acknowledged" : true, "insertedId" : "Seq1" }
+> db.studentUni.insertOne({'_id':nextSeq('Seq'),name:'Pankaj', class:'B.E', div:'A'});
+{ "acknowledged" : true, "insertedId" : "Seq2" }
+> db.studentUni.insertOne({'_id':nextSeq('Seq'),name:'Rupesh', class:'B.E', div:'C'});
+{ "acknowledged" : true, "insertedId" : "Seq3" }
+> db.studentUni.insertOne({'_id':nextSeq('Sqe'),name:'Vaibhav', class:'S.E', div:'B'});
+{ "acknowledged" : true, "insertedId" : "Seq4" }
+> db.studentUni.find();
+{ "_id" : "Seq", "seq_value" : 4 }
+{ "_id" : "Seq1", "name" : "Nikhil", "class" : "F.Y", "div" : "G" }
+{ "_id" : "Seq2", "name" : "Pankaj", "class" : "B.E", "div" : "A" }
+{ "_id" : "Seq3", "name" : "Rupesh", "class" : "B.E", "div" : "C" }
+{ "_id" : "Seq4", "name" : "Vaibhav", "class" : "S.E", "div" : "B" }
+>
