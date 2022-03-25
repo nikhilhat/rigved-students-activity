@@ -1,0 +1,14 @@
+[
+    {   "id":123,
+        "name": "Nikhil",
+        "Salaray":420000
+    },
+    {"id":234,
+        "name": "Pankaj",
+        "Salaray":350000
+    },
+    {"id":345,
+        "name": "Vaibhav",
+        "Salaray":325000
+    }
+]
