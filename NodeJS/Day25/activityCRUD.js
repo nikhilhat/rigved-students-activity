@@ -2,7 +2,7 @@ let express = require('express');
 let app = express();
 let fs = require('fs');
 let parser = require('body-parser');
-let port = 3003;
+let port = 3001;
 app.listen(port, () => console.log(`Server is running at ${port}`));
 app.use(parser.json());
 
@@ -11,7 +11,7 @@ app.use(parser.json());
 app.post('/user', (request, response) => {
     let data = fs.readFileSync('CRUD.json');
     let dataString = data.toString();
-    
+
     if (dataString.length < 1 || dataString == "") {
         jsArray = [];
     } else {
@@ -21,7 +21,7 @@ app.post('/user', (request, response) => {
     jsArray.push(content);
     let jsonObject = JSON.stringify(jsArray);
     fs.writeFileSync('CRUD.json', jsonObject);
-    response.json('Done..')
+    response.json('Update Done..')
 });
 
 // showing all user present
@@ -32,6 +32,8 @@ app.get('/user', (request, response) => {
     //let jsonObject=JSON.stringify(jsObject);
     response.json(jsObject);
 });
+
+
 // showing filtered data based on id
 app.get('/user/:id', (request, response) => {
     let id1 = request.params.id;
@@ -45,6 +47,8 @@ app.get('/user/:id', (request, response) => {
         }
     }
 });
+
+
 //deleting respective data
 app.delete('/user/:id', (request, response) => {
     let id1 = request.params.id;
