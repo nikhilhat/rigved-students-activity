@@ -1,0 +1,17 @@
+<div>
+    <h2>MDF DEMO</h2>
+    <label>
+        FirstName: <input [formControl]="firstname">
+        LastName: <input [formControl]="lastname">
+    </label>
+</div>
+<hr>
+<div>
+    {{firstname | json }}
+    {{lastname | json}}
+</div>
+<hr>
+<div>
+    FirstNameValue : {{firstname.value}} <br>
+    LastNameValue : {{lastname.value}}
+</div>
