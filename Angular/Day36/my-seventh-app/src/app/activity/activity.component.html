@@ -1,0 +1,33 @@
+<div>
+    <h2>
+        Form Builder demo...!
+    </h2>
+    <form [formGroup]= "profile" (ngSubmit)="handleSubmit()"> 
+        
+        <div>
+            FirstName:
+             <input type="text" formControlName="firstname">
+        </div>
+        <div>
+            LastName <input type="text" formControlName="lastname">
+        </div>
+    </form>
+    <form [formGroup]= "address" (ngSubmit)="handleSubmit()">
+        <div>
+            State <input type="text" formControlName="state">
+        </div>
+        <div>
+            City <input type="text" formControlName="city">
+        </div>
+        <div>
+            Pin <input type="number" formControlName="pin">
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+    <div>
+        profile: {{profile.value | json}}
+        address: {{address.value | json}}
+    </div>
+</div>>
