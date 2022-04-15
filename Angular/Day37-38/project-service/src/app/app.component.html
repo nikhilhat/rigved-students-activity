@@ -1,15 +1,29 @@
 <div class="container-fluid">
-    <h3 style="background-color: antiquewhite; border: solid black;">Welcome to Main</h3>
-  <div class="container"  style="color: blueviolet;">
+  <h3 style="background-color: antiquewhite; border: solid black;">Welcome to Main</h3>
+  <div class="container" style="color: blueviolet;">
     <a routerLink="store">Registration</a>/
     <a routerLink="delete">Delete</a>/
     <a routerLink="update">update</a>/
-    <a routerLink="display">User Database</a></div>
-
-
-  <div class="container">
-    <router-outlet></router-outlet>
+    <a routerLink="display">User Database</a>
   </div>
+
+
+
+
+  <table style="width: fit-content; background-color: burlywood;">
+    <tr>
+    <td>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </td>
+    <td>
+      <div class="container" style="float: right;">
+        <app-display-list></app-display-list>
+      </div>
+    </td>
+  </tr>
+  </table>
 
 
 
