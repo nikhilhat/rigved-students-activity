@@ -1,0 +1,20 @@
+<div>
+    <h3>User Lists</h3>
+
+    <table *ngIf="items" class="table table-striped">
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>Name</th>
+                <th>DOB</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" Let user of items">
+                <td>{{user.UserID}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.dob}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

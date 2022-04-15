@@ -1,0 +1,63 @@
+<div style="background-color:lightblue">
+    <h2><i style="color: blueviolet;">Store your data</i></h2>
+
+    <form [formGroup]="userForm" (ngSubmit)="saveForm()" class="form-control">
+
+        <div class="form-control" style="background-color: lightblue;">
+            Name : <tr><input type="text" formControlName="name"> </tr>
+            <span [hidden]="userForm.controls['name'].valid || userForm.controls['name'].pristine"
+                class="text-danger">name is required</span>
+        </div>
+        <div class="form-control" style="background-color:aqua">
+            Phone Number : <tr><input type="number" formControlName="phone" name="phone"></tr>
+            <span [hidden]="userForm.controls['phone'].valid || userForm.controls['phone'].pristine"
+                class="text-danger">phone is required</span>
+        </div>
+        <div class="form-control" style="background-color: lightblue;">
+            Gender : Male<input type="radio" name="gender" value="Male" formControlName="gender">
+            Female<input type="radio" name="gender" value="Female" formControlName="gender">
+            <span class="text-danger"
+                [hidden]="userForm.controls['gender'].valid || userForm.controls['gender'].pristine">Gender is
+                mandatory</span>
+        </div>
+
+        <div class="form-control" style="background-color:aqua;">
+            E-mail :
+            <tr><input type="email" formControlName="email" name="email"></tr>
+            <span [hidden]="userForm.controls['email'].valid || userForm.controls['email'].pristine"
+                class="text-danger">email is mandatory</span>
+
+        </div>
+
+        <div formGroupName="address" class="form-control" style="background-color: lightblue;">
+            <thead>
+            <i style="color: gray;">Address</i><br>
+        </thead>
+
+            <td>
+                <tr>
+                    <label for="state">State : <input type="text" formControlName="state" name="state"></label>
+                    <span class="text-danger"
+                        [hidden]="userForm.controls['address'].get('state')?.valid || userForm.controls['address'].get('state')?.pristine">State
+                        is required</span><br>
+                    <label for="city">City : <input type="text" formControlName="city" name="city"></label>
+                    <span class="text-danger"
+                        [hidden]="userForm.controls['address'].get('city')?.valid || userForm.controls['address'].get('city')?.pristine">City
+                        is required</span> <br>
+
+                    <label for="pin">Pin Code : <input type="number" formControlName="pin" name="pin"></label>
+                    <span class="text-danger"
+                        [hidden]="userForm.controls['address'].get('pin')?.valid || userForm.controls['address'].get('pin')?.pristine">Pin
+                        is required</span>
+                </tr>
+            </td>
+        </div>
+        <div class="form-control" style="background-color: aqua;">
+            <input type="submit" value="submit" style="color: green; background-color: lightblue; border-radius: 15px;">
+        </div>
+
+        <div class="form-control" style="background-color: lightblue;">
+            <input type="reset" value="reset" style="color: green; background-color: lightblue; border-radius: 15px; ">
+        </div>
+    </form>
+</div>
